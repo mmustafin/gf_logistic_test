@@ -6,19 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use RonasIT\Support\Traits\ModelTrait;
 
-/**
- * Модель доставки
- *
- * @property int $id
- * @property string $status
- */
-class Delivery extends Model
+class Driver extends Model
 {
     use HasFactory;
     use ModelTrait;
-
-    protected $fillable = [
-        'status',
-        'driver',
-    ];
 }
