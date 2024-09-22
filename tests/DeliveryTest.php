@@ -4,6 +4,7 @@ namespace App\Tests;
 
 use App\Events\DeliveryDelivered;
 use App\Models\Delivery;
+use App\Models\DeliveryStatus;
 use DB;
 use Illuminate\Support\Facades\Event;
 
@@ -25,11 +26,11 @@ class DeliveryTest extends TestCase
         // Отгрузка
         $response = $this->post('deliveries/' . $this->delivery->id . '/status-change', ['status' => 'shipped']);
         $response->assertOk();
-        $this->assertDatabaseHas('deliveries', ['id' => $this->delivery->id, 'status' => 'shipped']);
+        $this->assertDatabaseHas('deliveries', ['id' => $this->delivery->id, 'status' => 2]);
 
         // Доставлен
         $response = $this->post('deliveries/' . $this->delivery->id . '/status-change', ['status' => 'delivered']);
         $response->assertOk();
-        $this->assertDatabaseHas('deliveries', ['id' => $this->delivery->id, 'status' => 'delivered']);
+        $this->assertDatabaseHas('deliveries', ['id' => $this->delivery->id, 'status' => 3]);
     }
 }

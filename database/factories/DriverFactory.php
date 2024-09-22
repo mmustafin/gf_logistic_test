@@ -2,14 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Delivery;
-use App\Models\Driver;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Delivery>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Driver>
  */
-class DeliveryFactory extends Factory
+class DriverFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +17,8 @@ class DeliveryFactory extends Factory
     public function definition(): array
     {
         return [
-            'status' => '1',
-            'driver' => Driver::factory(),
+            'name' => $this->faker->name(),
+            'phone' => $this->faker->e164PhoneNumber(),
         ];
     }
 }
